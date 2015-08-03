@@ -1,3 +1,6 @@
+let mapleader = ","
+let maplocalleader = ";"
+
 " .vimrc Meta Settings {{{
 " Easy access to this file
 nnoremap <leader>ev :sp $MYVIMRC<cr><c-w>_
@@ -50,6 +53,9 @@ set expandtab
 set smartindent
 set ts=4
 set sw=4
+
+set nocompatible
+set modelines=0
 "}}}
 
 " Abbreviations {{{
@@ -57,9 +63,6 @@ iabbrev @@ dstrick2989@gmail.com
 " }}}
 
 " General Mappings {{{
-let mapleader = ","
-let maplocalleader = ";"
-
 " zz is hard to press and space is too good of real estate to shadow l'
 nnoremap <space> zz
 
