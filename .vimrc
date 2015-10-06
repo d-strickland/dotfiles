@@ -10,6 +10,8 @@ augroup filetype_vim
     autocmd!
     autocmd FileType vim nnoremap <buffer> <localleader>cv :source $MYVIMRC<cr>:wq<cr><c-w>_
     autocmd FileType vim setlocal foldmethod=marker
+    autocmd FileType vim nnoremap <buffer> <localleader>ws :write<cr>:source %<cr>
+" nnoremap <leader>g :exe "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>
 augroup END
 " }}}
 
@@ -18,13 +20,14 @@ filetype on
 syntax on
 colorscheme desert
 set background=dark
-hi Comment ctermfg=darkred
-hi String ctermfg=darkgreen
-hi Constant ctermfg=darkgreen
-hi LineNr ctermfg=lightgrey
-hi ColorColumn ctermbg=black
+highlight Comment ctermfg=darkred
+highlight String ctermfg=darkgreen
+highlight Constant ctermfg=darkgreen
+highlight LineNr ctermfg=lightgrey
+highlight ColorColumn ctermbg=black
 let &colorcolumn=join(range(81,999),",")
-hi WarningMsg ctermfg=red
+highlight WarningMsg ctermfg=red
+highlight Folded ctermfg=lightgrey
 " }}}
 
 " Statusline {{{
@@ -46,6 +49,7 @@ set statusline+=\ \(%P\)    " Percent through file
 set ignorecase  " Ignore case in searches unless a capital letter is included.
 set smartcase   " Both ignorecase and smartcase must be set.
 set incsearch
+set nohlsearch
 set showcmd
 set number
 
@@ -57,10 +61,6 @@ set sw=4
 set nocompatible
 set modelines=0
 "}}}
-
-" Abbreviations {{{
-iabbrev @@ dstrick2989@gmail.com
-" }}}
 
 " General Mappings {{{
 " zz is hard to press and space is too good of real estate to shadow l'
@@ -83,11 +83,29 @@ nnoremap <c-b> <c-v>
 inoremap <c-u> <esc>viwUea
 nnoremap <c-u> viwUe
 
+" Open a split containing the previous buffer.
+nnoremap <leader>sp :execute "rightbelow split " . bufname("#")<CR>
+
 " Two-keystroke window switching
 nnoremap <c-j> <c-w>j<c-w>_
 nnoremap <c-k> <c-w>k<c-w>_
 nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
+nnoremap <c-l> <c-w>l   
+
+" Seek and destroy trailing whitespace
+nnoremap <leader>w :match Error /\v\s+$/<cr>
+nnoremap <leader>W :match Error /\v\$^/<cr>
+
+" Normal regex search
+nnoremap / /\v
+
+" Grep for the current word in the current directory
+" nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen 5<cr>
+nnoremap <leader>cn :cnext<cr>
+nnoremap <leader>cp :cprevious<cr>
+nnoremap <leader>co :copen 5<cr>
+nnoremap <leader>cc :cclose<cr>
+
 " }}}
 
 " Homebrew Surround Plugin {{{
