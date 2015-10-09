@@ -14,9 +14,11 @@ augroup filetype_vim
 augroup END
 " }}}
 
+execute pathogen#infect()
+
 " Syntax Highlighting {{{
-filetype on
 syntax on
+filetype plugin indent on
 colorscheme desert
 set background=dark
 highlight Comment ctermfg=darkred
