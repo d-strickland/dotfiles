@@ -6,7 +6,21 @@
     hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
 
 [core]
-    pager = more
+    editor = vim
+    autocrlf = false
+    safecrlf = true
+    pager = less -FX
 	excludesfile = ~/.gitignore
+
+[merge]
+    tool = vimdiff
+
+[alias]
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+
+[difftool]
+    tool = vimdiff
+	prompt = false
+
 [push]
 	default = simple
