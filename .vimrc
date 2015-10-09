@@ -76,6 +76,8 @@ set undofile
 set wrap
 set textwidth=79
 set formatoptions=qrn1
+
+let g:netrw_winsize = 20
 "}}}
 
 " General Mappings {{{
