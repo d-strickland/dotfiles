@@ -8,7 +8,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 augroup filetype_vim
     autocmd!
-    autocmd FileType vim nnoremap <buffer> <localleader>cv :source $MYVIMRC<cr>:wq<cr><c-w>_
+    autocmd FileType vim nnoremap <buffer> <localleader>cv :source $MYVIMRC<cr>:wq<cr>
     autocmd FileType vim setlocal foldmethod=marker
     autocmd FileType vim nnoremap <buffer> <localleader>ws :write<cr>:source %<cr>
 " nnoremap <leader>g :exe "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>
@@ -49,6 +49,8 @@ set statusline+=\ \(%P\)    " Percent through file
 set ignorecase  " Ignore case in searches unless a capital letter is included.
 set smartcase   " Both ignorecase and smartcase must be set.
 set incsearch
+set gdefault
+set showmatch
 set nohlsearch
 set showcmd
 set number
@@ -60,10 +62,25 @@ set sw=4
 
 set nocompatible
 set modelines=0
+
+set encoding=utf-8
+set scrolloff=3
+set autoindent
+set showmode
+set hidden
+set ruler
+set backspace=indent,eol,start
+set laststatus=2
+set relativenumber
+set undofile
+
+set wrap
+set textwidth=79
+set formatoptions=qrn1
 "}}}
 
 " General Mappings {{{
-" zz is hard to press and space is too good of real estate to shadow l'
+" zz is hard to press and space is too good of real estate to shadow l
 nnoremap <space> zz
 
 " Make Y consistent with how D and C behave. Use yy to yank a line.
@@ -90,21 +107,26 @@ nnoremap <leader>sp :execute "rightbelow split " . bufname("#")<CR>
 nnoremap <c-j> <c-w>j<c-w>_
 nnoremap <c-k> <c-w>k<c-w>_
 nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l   
+nnoremap <c-l> <c-w>l
 
 " Seek and destroy trailing whitespace
 nnoremap <leader>w :match Error /\v\s+$/<cr>
-nnoremap <leader>W :match Error /\v\$^/<cr>
+nnoremap <leader>W :%s/\v\s+$//<cr>:let @/=''<cr>
 
 " Normal regex search
 nnoremap / /\v
+vnoremap / /\v
 
-" Grep for the current word in the current directory
-" nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen 5<cr>
 nnoremap <leader>cn :cnext<cr>
 nnoremap <leader>cp :cprevious<cr>
 nnoremap <leader>co :copen 5<cr>
 nnoremap <leader>cc :cclose<cr>
+
+nnoremap <tab> %
+vnoremap <tab> %
+
+"Save on losing focus from vim.
+au FocusLost * :wa
 
 " }}}
 
@@ -189,7 +211,7 @@ augroup END
 hi DiffAdd term=reverse cterm=bold ctermbg=green ctermfg=white
 hi DiffChange term=reverse cterm=bold ctermbg=cyan ctermfg=black
 hi DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black
-hi DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black 
+hi DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black
 augroup vimdiff
     autocmd!
     " Automatically refresh a diff when either file is edited

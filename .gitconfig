@@ -1,0 +1,12 @@
+[user]
+	name = David Strickland
+	email = "dstrick2989@gmail.com"
+
+[alias]
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+
+[core]
+    pager = more
+	excludesfile = ~/.gitignore
+[push]
+	default = simple
