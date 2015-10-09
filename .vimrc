@@ -11,7 +11,6 @@ augroup filetype_vim
     autocmd FileType vim nnoremap <buffer> <localleader>cv :source $MYVIMRC<cr>:wq<cr>
     autocmd FileType vim setlocal foldmethod=marker
     autocmd FileType vim nnoremap <buffer> <localleader>ws :write<cr>:source %<cr>
-" nnoremap <leader>g :exe "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>
 augroup END
 " }}}
 
