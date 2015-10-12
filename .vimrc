@@ -65,7 +65,7 @@ set nocompatible
 set modelines=0
 
 set encoding=utf-8
-set scrolloff=3
+set scrolloff=2
 set autoindent
 set showmode
 set hidden
