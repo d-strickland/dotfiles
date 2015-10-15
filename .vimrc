@@ -1,9 +1,11 @@
 let mapleader = ","
 let maplocalleader = ";"
 
+let $PATH = $PATH . ':' . expand('~/.cabal/bin')
+
 " .vimrc Meta Settings {{{
 " Easy access to this file
-nnoremap <leader>ev :sp $MYVIMRC<cr><c-w>_
+nnoremap <leader>ev :sp $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 augroup filetype_vim
@@ -26,9 +28,10 @@ highlight String ctermfg=darkgreen
 highlight Constant ctermfg=darkgreen
 highlight LineNr ctermfg=lightgrey
 highlight ColorColumn ctermbg=black
-let &colorcolumn=join(range(81,999),",")
+" let &colorcolumn=join(range(81,999),",")
 highlight WarningMsg ctermfg=red
 highlight Folded ctermfg=lightgrey
+highlight Search cterm=NONE ctermfg=grey ctermbg=black
 " }}}
 
 " Statusline {{{
@@ -107,8 +110,8 @@ nnoremap <c-u> viwUe
 nnoremap <leader>sp :execute "rightbelow split " . bufname("#")<CR>
 
 " Two-keystroke window switching
-nnoremap <c-j> <c-w>j<c-w>_
-nnoremap <c-k> <c-w>k<c-w>_
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
@@ -222,3 +225,20 @@ augroup vimdiff
 augroup END
 " }}}
 
+" Syntastic Settings {{{
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" }}}
+
+" ghc-mod Settings {{{
+" Reload
+map <silent> <leader>tu :call GHC_BrowseAll()<CR>
+" Type Lookup
+map <silent> <leader>tw :call GHC_ShowType(1)<CR>
+" }}}
