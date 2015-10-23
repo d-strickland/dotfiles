@@ -31,7 +31,7 @@ highlight ColorColumn ctermbg=black
 " let &colorcolumn=join(range(81,999),",")
 highlight WarningMsg ctermfg=red
 highlight Folded ctermfg=lightgrey
-highlight Search cterm=NONE ctermfg=grey ctermbg=black
+highlight Search cterm=NONE ctermfg=grey ctermbg=darkblue
 " }}}
 
 " Statusline {{{
@@ -123,6 +123,13 @@ nnoremap <leader>cp :cprevious<cr>
 nnoremap <leader>co :copen 5<cr>
 nnoremap <leader>cc :cclose<cr>
 
+" Location list shortcuts
+nnoremap <leader>ln :lnext<cr>
+nnoremap <leader>lp :lprevious<cr>
+nnoremap <leader>lo :lopen 3<cr>
+nnoremap <leader>ll :lopen 3<cr>
+nnoremap <leader>lc :lclose<cr>
+
 nnoremap <tab> %
 vnoremap <tab> %
 
@@ -203,9 +210,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 3
 " }}}
 
