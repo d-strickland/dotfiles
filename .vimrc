@@ -136,67 +136,6 @@ au FocusLost * :wa
 
 " }}}
 
-" Homebrew Surround Plugin {{{
-nnoremap <leader>' ciw'<c-r>"'<esc>
-nnoremap <leader>" ciw"<c-r>""<esc>
-nnoremap <leader>[ ciw[<c-r>"]<esc>
-nnoremap <leader>( ciw(<c-r>")<esc>
-nnoremap <leader>{ ciw{<c-r>"}<esc>
-nnoremap <leader>< ciw<<c-r>"><esc>
-
-nnoremap <leader>d' di'hPlxx
-nnoremap <leader>d" di"hPlxx
-nnoremap <leader>d[ di[hPlxx
-nnoremap <leader>d( di(hPlxx
-nnoremap <leader>d{ di{hPlxx
-nnoremap <leader>d< di<hPlxx
-
-vnoremap <leader>' c'<esc>:setl paste<cr>a<c-r>"'<esc>:setl nopaste<cr>
-vnoremap <leader>" c"<esc>:setl paste<cr>a<c-r>""<esc>:setl nopaste<cr>
-vnoremap <leader>[ c[<esc>:setl paste<cr>a<c-r>"]<esc>:setl nopaste<cr>
-vnoremap <leader>( c(<esc>:setl paste<cr>a<c-r>")<esc>:setl nopaste<cr>
-vnoremap <leader>{ c{<esc>:setl paste<cr>a<c-r>"}<esc>:setl nopaste<cr>
-vnoremap <leader>< c<<esc>:setl paste<cr>a<c-r>"><esc>:setl nopaste<cr>
-
-onoremap in' :<c-u>normal! f'vi'<cr>
-onoremap ip' :<c-u>normal! F'vi'<cr>
-onoremap in" :<c-u>normal! f"vi"<cr>
-onoremap ip" :<c-u>normal! F"vi"<cr>
-onoremap in[ :<c-u>normal! f[vi[<cr>
-onoremap ip[ :<c-u>normal! F]vi[<cr>
-onoremap in( :<c-u>normal! f(vi(<cr>
-onoremap ip( :<c-u>normal! F)vi(<cr>
-onoremap in{ :<c-u>normal! f{vi{<cr>
-onoremap ip{ :<c-u>normal! F}vi{<cr>
-onoremap in< :<c-u>normal! f<vi<<cr>
-onoremap ip< :<c-u>normal! F>vi<<cr>
-
-onoremap an' :<c-u>normal! f'va'<cr>
-onoremap ap' :<c-u>normal! F'va'<cr>
-onoremap an" :<c-u>normal! f"va"<cr>
-onoremap ap" :<c-u>normal! F"va"<cr>
-onoremap an[ :<c-u>normal! f[va[<cr>
-onoremap ap[ :<c-u>normal! F]va[<cr>
-onoremap an( :<c-u>normal! f(va(<cr>
-onoremap ap( :<c-u>normal! F)va(<cr>
-onoremap an{ :<c-u>normal! f{va{<cr>
-onoremap ap{ :<c-u>normal! F}va{<cr>
-onoremap an< :<c-u>normal! f<va<<cr>
-onoremap ap< :<c-u>normal! F>va<<cr>
-" }}}
-
-" Python Settings {{{
-
-" Hack to keep smartindent from moving python comments all the way to the left
-inoremap # x<bs>#
-augroup filetype_python
-    autocmd!
-    autocmd FileType python nnoremap <buffer> <localleader>c 0i#<esc>
-    autocmd FileType python nnoremap <buffer> <localleader>C 0x<esc>
-    autocmd FileType python iabbrev <buffer> def def ():<cr>"""<cr>"""<up><up>
-augroup END
-" }}}
-
 " HTML Settings {{{
 " HTML folding
 augroup filetype_html
@@ -237,9 +176,3 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 3
 " }}}
 
-" ghc-mod Settings {{{
-" Reload
-map <silent> <leader>tu :call GHC_BrowseAll()<CR>
-" Type Lookup
-map <silent> <leader>tw :call GHC_ShowType(1)<CR>
-" }}}
