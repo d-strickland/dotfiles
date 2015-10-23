@@ -109,12 +109,6 @@ nnoremap <c-u> viwUe
 " Open a split containing the previous buffer.
 nnoremap <leader>sp :execute "rightbelow split " . bufname("#")<CR>
 
-" Two-keystroke window switching
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
 " Seek and destroy trailing whitespace
 nnoremap <leader>w :match Error /\v\s+$/<cr>
 nnoremap <leader>W :%s/\v\s+$//<cr>:let @/=''<cr>
@@ -123,6 +117,7 @@ nnoremap <leader>W :%s/\v\s+$//<cr>:let @/=''<cr>
 nnoremap / /\v
 vnoremap / /\v
 
+" Quickfix shortcuts
 nnoremap <leader>cn :cnext<cr>
 nnoremap <leader>cp :cprevious<cr>
 nnoremap <leader>co :copen 5<cr>
@@ -134,6 +129,44 @@ vnoremap <tab> %
 "Save on losing focus from vim.
 au FocusLost * :wa
 
+" }}}
+
+" Window Navigation {{{
+
+" MaximizeWithoutResizingQuickfix
+" Barry Arthur, 2012 08 14
+" A solution not using vimple
+
+function! MaximizeWithoutResizingQuickfix()
+  let qfwnr = get(get(filter(map(range(1,winnr('$')), '[v:val, getwinvar(v:val, "&buftype")]'), 'v:val[1] =~ "quickfix"'), 0, []), 0, -1)
+  let qfh = winheight(qfwnr)
+  wincmd _
+  if qfwnr != -1
+    exe qfwnr . "wincmd w"
+    exe "resize " . qfh
+    wincmd p
+  endif
+endfunction
+
+" Two-keystroke window switching
+nnoremap <c-j> <c-w>j:call MaximizeWithoutResizingQuickfix()<cr>
+nnoremap <c-k> <c-w>k:call MaximizeWithoutResizingQuickfix()<cr>
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+" }}}
+
+" Toggle paste mode automatically {{{
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
 " }}}
 
 " HTML Settings {{{
