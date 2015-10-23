@@ -156,8 +156,8 @@ function! MaximizeWithoutResizingQuickfix()
 endfunction
 
 " Two-keystroke window switching
-nnoremap <c-j> <c-w>j:call MaximizeWithoutResizingQuickfix()<cr>
-nnoremap <c-k> <c-w>k:call MaximizeWithoutResizingQuickfix()<cr>
+nnoremap <silent> <c-j> <c-w>j:call MaximizeWithoutResizingQuickfix()<cr>
+nnoremap <silent> <c-k> <c-w>k:call MaximizeWithoutResizingQuickfix()<cr>
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
