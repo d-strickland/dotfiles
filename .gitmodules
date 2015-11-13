@@ -17,3 +17,7 @@
 	path = .vim/bundle/YouCompleteMe
 	url = git@github.com:Valloric/YouCompleteMe
 	branch = master
+[submodule ".vim/bundle/vim-vinegar"]
+	path = .vim/bundle/vim-vinegar
+	url = git://github.com/tpope/vim-vinegar.git
+	branch = master
