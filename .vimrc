@@ -16,7 +16,22 @@ augroup filetype_vim
 augroup END
 " }}}
 
-execute pathogen#infect()
+" Vundle {{{
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-surround.git'
+Plugin 'scrooloose/syntastic'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'Shougo/vimproc.vim.git'
+Plugin 'tpope/vim-vinegar.git'
+
+call vundle#end()
+" }}}
 
 " Syntax Highlighting {{{
 syntax on
@@ -64,7 +79,6 @@ set smartindent
 set ts=4
 set sw=4
 
-set nocompatible
 set modelines=0
 
 set encoding=utf-8
