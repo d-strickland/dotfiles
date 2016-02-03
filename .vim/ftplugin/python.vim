@@ -5,5 +5,3 @@ inoremap # x<bs>#
 nnoremap <buffer> <localleader>c 0i#<esc>
 nnoremap <buffer> <localleader>C 0x<esc>
 
-iabbrev <buffer> def def ():<cr>"""<cr>"""<up><up>
-
