@@ -29,6 +29,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'Shougo/vimproc.vim.git'
 Plugin 'tpope/vim-vinegar.git'
+Plugin 'Scuilion/gradle-syntastic-plugin'
 
 call vundle#end()
 " }}}
