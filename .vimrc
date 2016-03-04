@@ -29,6 +29,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'eagletmt/ghcmod-vim'
 Plugin 'Shougo/vimproc.vim.git'
 Plugin 'tpope/vim-vinegar.git'
+Plugin 'Scuilion/gradle-syntastic-plugin'
 
 call vundle#end()
 " }}}
@@ -52,7 +53,7 @@ highlight Search cterm=NONE ctermfg=grey ctermbg=darkblue
 " Statusline {{{
 set laststatus=2            " Always show status line
 
-set statusline=%t           " Tail of filename
+set statusline=%f           " Relative path to file
 set statusline+=\ %y        " Filetype
 set statusline+=[%{&ff}]    " File format
 set statusline+=%h          " Help file flag
