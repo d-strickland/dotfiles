@@ -5,3 +5,5 @@ inoremap # x<bs>#
 nnoremap <buffer> <localleader>c 0i#<esc>
 nnoremap <buffer> <localleader>C 0x<esc>
 
+" Run tests in working directory
+nnoremap <buffer> <localleader>t :!python -m unittest discover<cr>
