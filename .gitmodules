@@ -21,3 +21,6 @@
        path = .vim/bundle/vim-vinegar
        url = git://github.com/tpope/vim-vinegar.git
        branch = master
+[submodule ".vim/bundle/Vundle.vim"]
+	path = .vim/bundle/Vundle.vim
+	url = git@github.com:VundleVim/Vundle.vim
