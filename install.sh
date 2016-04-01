@@ -9,4 +9,8 @@ for T in ${TARGETS[*]}; do
     ln -s `readlink -e $T` ~/$T
     echo "Created symlink for $T"
 done
+
+git clone git@github.com:VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
+
 exit 0
