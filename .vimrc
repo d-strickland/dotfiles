@@ -30,6 +30,8 @@ Plugin 'eagletmt/ghcmod-vim'
 Plugin 'Shougo/vimproc.vim.git'
 Plugin 'tpope/vim-vinegar.git'
 Plugin 'Scuilion/gradle-syntastic-plugin'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tfnico/vim-gradle'
 
 call vundle#end()
 " }}}
@@ -151,6 +153,7 @@ vnoremap <tab> %
 "Save on losing focus from vim.
 au FocusLost * :wa
 
+nnoremap <f8> :Dispatch<cr>
 " }}}
 
 " Window Navigation {{{
