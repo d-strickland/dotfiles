@@ -32,6 +32,7 @@ Plugin 'tpope/vim-vinegar.git'
 Plugin 'Scuilion/gradle-syntastic-plugin'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tfnico/vim-gradle'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 " }}}
