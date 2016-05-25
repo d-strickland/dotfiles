@@ -12,7 +12,7 @@ function! s:GrepOperator(type)
         return
     endif
 
-    silent execute "grep! -IR " . shellescape(@@) . " ."
+    silent execute "grep! -IR --exclude-dir=.svn " . shellescape(@@) . " ."
     copen 5
     
     let @@ = saved_unnamed_register
