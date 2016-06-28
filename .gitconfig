@@ -2,15 +2,15 @@
 	name = David Strickland
 	email = "dstrick2989@gmail.com"
 
-[alias]
-    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-
 [core]
     editor = vim
     autocrlf = false
     safecrlf = true
-    pager = less -FX
+    pager = less -rFX
 	excludesfile = ~/.gitignore
+
+[pager]
+    branch = true
 
 [merge]
     tool = vimdiff
@@ -27,3 +27,6 @@
 
 [credential]
     helper = cache --timeout 30000
+
+[color]
+	ui = true
