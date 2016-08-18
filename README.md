@@ -1,4 +1,4 @@
-# Settings
+# Dotfiles
 Common settings for development.
 
 # Installation
