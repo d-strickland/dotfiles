@@ -34,6 +34,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'tfnico/vim-gradle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'junegunn/gv.vim'
+Plugin 'tpope/vim-obsession'
 
 call vundle#end()
 " }}}
@@ -110,6 +111,9 @@ nnoremap <space> zz
 
 " Make Y consistent with how D and C behave. Use yy to yank a line.
 nnoremap Y y$
+
+" Paste something on a new line, rather than in the middle.
+nnoremap <leader>p o<esc>p
 
 " Avoid the escape key at all costs
 inoremap jk <esc>
