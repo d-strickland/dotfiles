@@ -1,11 +1,11 @@
 [user]
 	name = David Strickland
-	email = "dstrick2989@gmail.com"
+	email = "dstrickland@austin.utexas.edu"
+	signingkey = BCB88567
 
 [core]
     editor = vim
-    autocrlf = false
-    safecrlf = true
+    autocrlf = input
     pager = less -rFX
 	excludesfile = ~/.gitignore
 
