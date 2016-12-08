@@ -118,7 +118,7 @@ nnoremap <leader>p o<esc>p
 " Avoid the escape key at all costs
 inoremap jk <esc>
 inoremap kj <esc>
-inoremap <esc> <nop>
+"inoremap <esc> <nop>
 vnoremap v <esc>
 vnoremap <esc> <nop>
 
@@ -143,7 +143,7 @@ vnoremap / /\v
 " Quickfix shortcuts
 nnoremap <leader>cn :cnext<cr>
 nnoremap <leader>cp :cprevious<cr>
-nnoremap <leader>co :copen 5<cr>
+nnoremap <leader>co :copen 10<cr>
 nnoremap <leader>cc :cclose<cr>
 
 " Location list shortcuts
@@ -234,8 +234,7 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_open = 1
 let g:syntastic_loc_list_height = 3
-let g:syntastic_mode="passive"
 " }}}
 
