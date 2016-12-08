@@ -33,7 +33,6 @@ Plugin 'Scuilion/gradle-syntastic-plugin'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tfnico/vim-gradle'
 Plugin 'tpope/vim-fugitive'
-Plugin 'junegunn/gv.vim'
 Plugin 'tpope/vim-obsession'
 
 call vundle#end()
@@ -234,7 +233,9 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_loc_list_height = 3
+let g:syntastic_check_on_wq = 0
 " }}}
 
