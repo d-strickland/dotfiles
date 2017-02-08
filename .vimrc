@@ -1,8 +1,6 @@
 let mapleader = ","
 let maplocalleader = ";"
 
-let $PATH = $PATH . ':' . expand('~/.cabal/bin')
-
 " .vimrc Meta Settings {{{
 " Easy access to this file
 nnoremap <leader>ev :sp $MYVIMRC<cr>
@@ -25,9 +23,9 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-surround.git'
-Plugin 'scrooloose/syntastic'
-Plugin 'eagletmt/ghcmod-vim'
 Plugin 'Shougo/vimproc.vim.git'
+Plugin 'eagletmt/ghcmod-vim'
+Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-vinegar.git'
 Plugin 'Scuilion/gradle-syntastic-plugin'
 Plugin 'tpope/vim-dispatch'
@@ -102,6 +100,7 @@ set textwidth=79
 set formatoptions=qrn1
 
 let g:netrw_winsize = 20
+let g:netrw_list_hide='.*\.swp$,.*\.un\~\*\?$'
 "}}}
 
 " General Mappings {{{
@@ -234,8 +233,9 @@ set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_loc_list_height = 3
 let g:syntastic_check_on_wq = 0
+let g:syntastic_mode = 'passive'
 " }}}
 
