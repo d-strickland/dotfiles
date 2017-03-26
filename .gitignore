@@ -1,4 +1,5 @@
 .vim/.netrwhist
+.vim/.netrwhist~
 *.un~
 tags
 __pycache__

@@ -8,6 +8,8 @@
     autocrlf = input
     pager = less -rFX
 	excludesfile = ~/.gitignore
+	trustctime = false
+	filemode = false
 
 [pager]
     branch = true
@@ -18,6 +20,15 @@
 [alias]
     hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
     st = status
+	last = log -1 --stat
+	cp = cherry-pick
+	co = checkout
+	cl = clone
+	ci = commit
+	br = branch
+	unstage = reset HEAD --
+	dc = diff --cached
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
 
 [difftool]
     tool = vimdiff
@@ -31,3 +42,8 @@
 
 [color]
 	ui = true
+[mergetool]
+	keeptemporaries = false
+	keepbackups = false
+	prompt = false
+	trustexitcode = false
