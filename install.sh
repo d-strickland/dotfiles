@@ -10,7 +10,7 @@ for T in ${TARGETS[*]}; do
     echo "Created symlink for $T"
 done
 
-git clone git@github.com:VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
 exit 0
