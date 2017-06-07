@@ -33,6 +33,7 @@ Plugin 'tfnico/vim-gradle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-obsession'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'Townk/vim-autoclose' 
 
 call vundle#end()
 " }}}
