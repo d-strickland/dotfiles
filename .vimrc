@@ -32,6 +32,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'tfnico/vim-gradle'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-obsession'
+Plugin 'altercation/vim-colors-solarized'
 
 call vundle#end()
 " }}}
@@ -39,17 +40,21 @@ call vundle#end()
 " Syntax Highlighting {{{
 syntax on
 filetype plugin indent on
-colorscheme desert
 set background=dark
-highlight Comment ctermfg=darkred
-highlight String ctermfg=darkgreen
-highlight Constant ctermfg=darkgreen
-highlight LineNr ctermfg=lightgrey
-highlight ColorColumn ctermbg=black
-" let &colorcolumn=join(range(81,999),",")
-highlight WarningMsg ctermfg=red
-highlight Folded ctermfg=lightgrey
-highlight Search cterm=NONE ctermfg=grey ctermbg=darkblue
+
+if has('gui_running')
+    set guifont=Menlo_Regular:h15
+    colorscheme solarized
+else
+    colorscheme desert
+    highlight Comment ctermfg=darkred
+    highlight String ctermfg=darkgreen
+    highlight Constant ctermfg=darkgreen
+    highlight LineNr ctermfg=lightgrey
+    highlight WarningMsg ctermfg=red
+    highlight Folded ctermfg=lightgrey
+    highlight Search cterm=NONE ctermfg=grey ctermbg=darkblue
+endif
 " }}}
 
 " Statusline {{{
@@ -98,6 +103,8 @@ set undofile
 set wrap
 set textwidth=79
 set formatoptions=qrn1
+
+set clipboard=unnamed
 
 let g:netrw_winsize = 20
 let g:netrw_list_hide='.*\.swp$,.*\.un\~\*\?$'

@@ -4,9 +4,9 @@ TARGETS=('.gitconfig' '.gitignore' '.vimrc' '.vim')
 for T in ${TARGETS[*]}; do
     if [ -a ~/$T ]
         then 
-            mv ~/$T ~/$T.bak
+            mv ~/$T ~/$T.`date +%Y%m%d%H%`
     fi
-    ln -s `readlink -e $T` ~/$T
+    ln -s `pwd`/$T ~/$T
     echo "Created symlink for $T"
 done
 
