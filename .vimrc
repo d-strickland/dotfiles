@@ -114,6 +114,7 @@ let g:netrw_list_hide='.*\.swp$,.*\.un\~\*\?$'
 " General Mappings {{{
 " zz is hard to press and space is too good of real estate to shadow l
 nnoremap <space> zz
+nnoremap <s-space> zz
 
 " Make Y consistent with how D and C behave. Use yy to yank a line.
 nnoremap Y y$
