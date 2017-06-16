@@ -34,6 +34,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-obsession'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Townk/vim-autoclose' 
+Plugin 'tpope/vim-sleuth'
 
 call vundle#end()
 " }}}
@@ -83,10 +84,13 @@ set nohlsearch
 set showcmd
 set number
 
-set expandtab
-set smartindent
+" Comment out indent settings while testing vim-sleuth {{{
+"set noexpandtab
+"set smartindent
+"set sw=4
+" }}}
+
 set ts=4
-set sw=4
 
 set modelines=0
 
@@ -106,6 +110,9 @@ set textwidth=79
 set formatoptions=qrn1
 
 set clipboard=unnamed
+
+set tags=./tags;
+set complete=.,w,b,u,i
 
 let g:netrw_winsize = 20
 let g:netrw_list_hide='.*\.swp$,.*\.un\~\*\?$'
