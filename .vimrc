@@ -35,6 +35,7 @@ Plugin 'tpope/vim-obsession'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Townk/vim-autoclose' 
 Plugin 'tpope/vim-sleuth'
+Plugin 'kien/ctrlp.vim'
 
 call vundle#end()
 " }}}
@@ -112,7 +113,7 @@ set formatoptions=qrn1
 set clipboard=unnamed
 
 set tags=./tags;
-set complete=.,w,b,u,i
+set complete=.,w,b,u
 
 let g:netrw_winsize = 20
 let g:netrw_list_hide='.*\.swp$,.*\.un\~\*\?$'
@@ -242,7 +243,7 @@ augroup vimdiff
 augroup END
 " }}}
 
-" Syntastic Settings {{{
+" Plugin Settings {{{
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -253,5 +254,8 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_loc_list_height = 3
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode = 'passive'
+
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 " }}}
 
