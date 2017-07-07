@@ -4,22 +4,22 @@
 	signingkey = BCB88567
 
 [core]
-    editor = vim
-    autocrlf = input
-    pager = less -rFX
+	editor = vim
+	autocrlf = input
+	pager = less -rFX
 	excludesfile = ~/.gitignore
 	trustctime = false
 	filemode = false
 
 [pager]
-    branch = true
+	branch = true
 
 [merge]
-    tool = vimdiff
+	tool = vimdiff
 
 [alias]
-    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-    st = status
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	st = status
 	last = log -1 --stat
 	cp = cherry-pick
 	co = checkout
@@ -31,14 +31,14 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
 
 [difftool]
-    tool = vimdiff
+	tool = vimdiff
 	prompt = false
 
 [push]
 	default = matching
 
 [credential]
-    helper = cache --timeout 30000
+	helper = cache --timeout 30000
 
 [color]
 	ui = true
