@@ -1,6 +1,6 @@
 [user]
-	name = David Strickland
-	email = "dstrickland@austin.utexas.edu"
+	name = David Strickland [dstrickland]
+	email = dstrickland@athenahealth.com
 	signingkey = BCB88567
 
 [core]

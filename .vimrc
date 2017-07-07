@@ -36,6 +36,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'Townk/vim-autoclose' 
 Plugin 'tpope/vim-sleuth'
 Plugin 'kien/ctrlp.vim'
+Plugin 'https://dstrickland@gitlab.athenahealth.com/vim-plugins/athena-plugin.git'
 
 call vundle#end()
 " }}}
@@ -113,7 +114,7 @@ set formatoptions=qrn1
 set clipboard=unnamed
 
 set tags=./tags;
-set complete=.,w,b,u
+set complete=.,w,b
 
 let g:netrw_winsize = 20
 let g:netrw_list_hide='.*\.swp$,.*\.un\~\*\?$'
@@ -149,7 +150,7 @@ nnoremap <leader>sp :execute "rightbelow split " . bufname("#")<CR>
 
 " Seek and destroy trailing whitespace
 nnoremap <leader>w :match Error /\v\s+$/<cr>
-nnoremap <leader>W :%s/\v\s+$//<cr>:let @/=''<cr>
+nnoremap <silent> <leader>W :%s/\v\s+$//<cr>:let @/=''<cr>
 
 " Normal regex search
 nnoremap / /\v
@@ -175,6 +176,8 @@ vnoremap <tab> %
 au FocusLost * :wa
 
 nnoremap <f8> :Dispatch<cr>
+
+nnoremap <leader>f :let @+=expand("%:p")<cr>
 " }}}
 
 " Window Navigation {{{
