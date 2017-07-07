@@ -42,23 +42,18 @@ call vundle#end()
 " }}}
 
 " Syntax Highlighting {{{
-syntax on
-filetype plugin indent on
+let g:solarized_termcolors = 256
+let g:solarized_termtrans = 1
+let g:solarized_degrade = 1
+let g:solarized_bold = 1
+let g:solarized_underline = 1
+let g:solarized_italic = 1
+let g:solarized_contrast = "normal"
+let g:solarized_visibility= "normal"
+syntax enable
 set background=dark
-
-if has('gui_running')
-    set guifont=Menlo_Regular:h15
-    colorscheme solarized
-else
-    colorscheme desert
-    highlight Comment ctermfg=darkred
-    highlight String ctermfg=darkgreen
-    highlight Constant ctermfg=darkgreen
-    highlight LineNr ctermfg=lightgrey
-    highlight WarningMsg ctermfg=red
-    highlight Folded ctermfg=lightgrey
-    highlight Search cterm=NONE ctermfg=grey ctermbg=darkblue
-endif
+colorscheme solarized
+filetype plugin indent on
 " }}}
 
 " Statusline {{{
@@ -85,6 +80,7 @@ set showmatch
 set nohlsearch
 set showcmd
 set number
+set relativenumber
 
 " Comment out indent settings while testing vim-sleuth {{{
 "set noexpandtab
@@ -104,7 +100,7 @@ set hidden
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
-set relativenumber
+"set relativenumber
 set undofile
 
 set wrap
