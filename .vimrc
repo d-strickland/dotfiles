@@ -54,6 +54,10 @@ syntax enable
 set background=dark
 colorscheme solarized
 filetype plugin indent on
+
+if has('gui_running')
+    set guifont=Menlo_Regular:h15
+endif
 " }}}
 
 " Statusline {{{
