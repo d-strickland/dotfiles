@@ -25,9 +25,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-surround.git'
 Plugin 'Shougo/vimproc.vim.git'
 Plugin 'eagletmt/ghcmod-vim'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-vinegar.git'
-Plugin 'Scuilion/gradle-syntastic-plugin'
+" Plugin 'Scuilion/gradle-syntastic-plugin'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tfnico/vim-gradle'
 Plugin 'tpope/vim-fugitive'
@@ -36,7 +36,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'Townk/vim-autoclose' 
 Plugin 'tpope/vim-sleuth'
 Plugin 'kien/ctrlp.vim'
-Plugin 'https://dstrickland@gitlab.athenahealth.com/vim-plugins/athena-plugin.git'
+Plugin 'w0rp/ale'
 
 call vundle#end()
 " }}}
@@ -49,11 +49,14 @@ let g:solarized_bold = 1
 let g:solarized_underline = 1
 let g:solarized_italic = 1
 let g:solarized_contrast = "normal"
-let g:solarized_visibility= "normal"
+let g:solarized_visibility = "normal"
+let g:solarized_diffmode = "high"
 syntax enable
 set background=dark
 colorscheme solarized
 filetype plugin indent on
+
+set omnifunc=syntaxcomplete#Complete
 
 if has('gui_running')
     set guifont=Menlo_Regular:h15
@@ -84,7 +87,6 @@ set showmatch
 set nohlsearch
 set showcmd
 set number
-set relativenumber
 
 " Comment out indent settings while testing vim-sleuth {{{
 "set noexpandtab
@@ -152,10 +154,6 @@ nnoremap <leader>sp :execute "rightbelow split " . bufname("#")<CR>
 nnoremap <leader>w :match Error /\v\s+$/<cr>
 nnoremap <silent> <leader>W :%s/\v\s+$//<cr>:let @/=''<cr>
 
-" Normal regex search
-nnoremap / /\v
-vnoremap / /\v
-
 " Quickfix shortcuts
 nnoremap <leader>cn :cnext<cr>
 nnoremap <leader>cp :cprevious<cr>
@@ -169,13 +167,7 @@ nnoremap <leader>lo :lopen 3<cr>
 nnoremap <leader>ll :lopen 3<cr>
 nnoremap <leader>lc :lclose<cr>
 
-nnoremap <tab> %
-vnoremap <tab> %
-
-"Save on losing focus from vim.
-au FocusLost * :wa
-
-nnoremap <f8> :Dispatch<cr>
+nnoremap <leader>d :Dispatch<cr>
 
 nnoremap <leader>f :let @+=expand("%:p")<cr>
 " }}}
@@ -235,10 +227,6 @@ augroup END
 " }}}
 
 " Vimdiff Settings {{{
-hi DiffAdd term=reverse cterm=bold ctermbg=green ctermfg=white
-hi DiffChange term=reverse cterm=bold ctermbg=cyan ctermfg=black
-hi DiffText term=reverse cterm=bold ctermbg=gray ctermfg=black
-hi DiffDelete term=reverse cterm=bold ctermbg=red ctermfg=black
 augroup vimdiff
     autocmd!
     " Automatically refresh a diff when either file is edited
@@ -247,16 +235,32 @@ augroup END
 " }}}
 
 " Plugin Settings {{{
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+" 
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_loc_list_height = 3
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_mode = 'passive'
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_loc_list_height = 3
-let g:syntastic_check_on_wq = 0
-let g:syntastic_mode = 'passive'
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'css': ['eslint'],
+\   'json': ['eslint'],
+\}
+let g:ale_lint_on_save = 1
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'css': ['prettier'],
+\   'json': ['prettier'],
+\}
+let g:ale_fix_on_save = 1
+
+let g:ale_sign_error = '❗'
+let g:ale_sign_warning = '⚠'
 
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
