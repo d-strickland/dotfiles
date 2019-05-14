@@ -1,6 +1,5 @@
 .vim/.netrwhist
-.vim/.netrwhist~
-*.un~
+*~
 tags
 __pycache__
 *.pyc

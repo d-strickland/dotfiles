@@ -37,6 +37,7 @@ Plugin 'Townk/vim-autoclose'
 Plugin 'tpope/vim-sleuth'
 Plugin 'kien/ctrlp.vim'
 Plugin 'w0rp/ale'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 " }}}
@@ -48,8 +49,8 @@ let g:solarized_degrade = 1
 let g:solarized_bold = 1
 let g:solarized_underline = 1
 let g:solarized_italic = 1
-let g:solarized_contrast = "normal"
-let g:solarized_visibility = "normal"
+let g:solarized_contrast = "high"
+let g:solarized_visibility = "high"
 let g:solarized_diffmode = "high"
 syntax enable
 set background=dark
