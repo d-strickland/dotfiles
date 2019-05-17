@@ -53,6 +53,7 @@
     (find-file-other-window user-init-file))
   (define-key my-leader-map "e" 'er-find-user-init-file)
   (define-key my-leader-map "s" 'eval-buffer)
+  (define-key my-leader-map "g" 'magit-status)
 
   (evil-mode))
 
@@ -101,6 +102,19 @@
 (use-package magit
   :ensure t)
 
+(use-package evil-magit
+  :ensure t)
+
+(use-package kotlin-mode
+  :ensure t)
+
+(use-package elpy
+  :ensure t
+  :init
+  (elpy-enable)
+  :config
+  (setq elpy-rpc-python-command "/usr/local/bin/python3"))
+
 ;; Turn off useless GUI shit
 (tool-bar-mode -1)
 (setq inhibit-startup-screen t)
@@ -111,6 +125,24 @@
 (setq-default indent-tabs-mode nil)
 (global-linum-mode t)
 (when (member "Menlo" (font-family-list)) (set-frame-font "Menlo-13" t t))
+(setq-default vc-follow-symlinks t)
+(setq-default undo-tree-auto-save-history t)
+
+(defun copy-from-osx ()
+  "Copy to system clipboard in mac os."
+  (shell-command-to-string "pbpaste"))
+
+(defun paste-to-osx (text &optional push)
+  "Paste from system clipboard in mac os.\
+TEXT: the text to paste.\
+PUSH: black-holed parameter."
+  (let ((process-connection-type nil))
+    (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+      (process-send-string proc text)
+      (process-send-eof proc))))
+
+(setq interprogram-cut-function 'paste-to-osx)
+(setq interprogram-paste-function 'copy-from-osx)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -122,7 +154,7 @@
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-    (magit evil-surround flycheck-ycmd company-ycmd auto-complete flycheck helm solarized-theme use-package evil-visual-mark-mode evil-escape)))
+    (color-theme-solarized evil-magit elpy kotlin-mode magit evil-surround flycheck-ycmd company-ycmd auto-complete flycheck helm solarized-theme use-package evil-visual-mark-mode evil-escape)))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
