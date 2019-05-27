@@ -33,8 +33,8 @@
   ;; Keymaps
   (define-key evil-normal-state-map "," my-leader-map)
 
-
   (define-key evil-normal-state-map (kbd "SPC") 'evil-scroll-line-to-center)
+  (define-key evil-normal-state-map (kbd "-") 'dired)
 
   (eval-when-compile
     (defvar my-leader-map (make-sparse-keymap)
@@ -80,10 +80,6 @@
   :ensure t
   :config
   (global-company-mode))
-(use-package flycheck
-  :ensure t
-  :config
-  (global-flycheck-mode))
 (use-package ycmd
   :ensure t
   :config
@@ -117,6 +113,7 @@
 
 ;; Turn off useless GUI shit
 (tool-bar-mode -1)
+(menu-bar-mode -1)
 (setq inhibit-startup-screen t)
 
 ;; Misc. Settings
@@ -127,6 +124,8 @@
 (when (member "Menlo" (font-family-list)) (set-frame-font "Menlo-13" t t))
 (setq-default vc-follow-symlinks t)
 (setq-default undo-tree-auto-save-history t)
+;; Highlight color
+(set-face-attribute 'region nil :background "#fff" :foreground "#468")
 
 (defun copy-from-osx ()
   "Copy to system clipboard in mac os."
