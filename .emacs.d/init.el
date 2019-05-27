@@ -127,22 +127,6 @@
 ;; Highlight color
 (set-face-attribute 'region nil :background "#fff" :foreground "#468")
 
-(defun copy-from-osx ()
-  "Copy to system clipboard in mac os."
-  (shell-command-to-string "pbpaste"))
-
-(defun paste-to-osx (text &optional push)
-  "Paste from system clipboard in mac os.\
-TEXT: the text to paste.\
-PUSH: black-holed parameter."
-  (let ((process-connection-type nil))
-    (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
-      (process-send-string proc text)
-      (process-send-eof proc))))
-
-(setq interprogram-cut-function 'paste-to-osx)
-(setq interprogram-paste-function 'copy-from-osx)
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
