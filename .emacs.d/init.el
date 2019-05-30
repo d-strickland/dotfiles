@@ -53,7 +53,7 @@
     (find-file-other-window user-init-file))
   (define-key my-leader-map "e" 'er-find-user-init-file)
   (define-key my-leader-map "s" 'eval-buffer)
-  (define-key my-leader-map "g" 'magit-status)
+  (define-key my-leader-map (kbd "g s") 'magit-status)
 
   (evil-mode))
 

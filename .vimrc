@@ -162,11 +162,11 @@ nnoremap <leader>co :copen 10<cr>
 nnoremap <leader>cc :cclose<cr>
 
 " Location list shortcuts
-nnoremap <leader>ln :lnext<cr>
-nnoremap <leader>lp :lprevious<cr>
-nnoremap <leader>lo :lopen 3<cr>
-nnoremap <leader>ll :lopen 3<cr>
-nnoremap <leader>lc :lclose<cr>
+nnoremap <leader>on :lnext<cr>
+nnoremap <leader>op :lprevious<cr>
+nnoremap <leader>oo :lopen 3<cr>
+nnoremap <leader>ol :lopen 3<cr>
+nnoremap <leader>oc :lclose<cr>
 
 nnoremap <leader>d :Dispatch<cr>
 
@@ -191,10 +191,10 @@ function! MaximizeWithoutResizingQuickfix()
 endfunction
 
 " Two-keystroke window switching
-nnoremap <silent> <c-j> <c-w>j:call MaximizeWithoutResizingQuickfix()<cr>
-nnoremap <silent> <c-k> <c-w>k:call MaximizeWithoutResizingQuickfix()<cr>
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
+nnoremap <silent> <leader>j <c-w>j:call MaximizeWithoutResizingQuickfix()<cr>
+nnoremap <silent> <leader>k <c-w>k:call MaximizeWithoutResizingQuickfix()<cr>
+nnoremap <leader>h <c-w>h
+nnoremap <leader>l <c-w>l
 
 " }}}
 
