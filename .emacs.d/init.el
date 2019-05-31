@@ -46,13 +46,9 @@
   (define-key my-leader-map ";" 'maximize-window)
   (define-key my-leader-map "t" 'ansi-term)
 
-  ;; Edit and load this file.
-  (defun er-find-user-init-file ()
-    "Edit the `user-init-file', in another window."
-    (interactive)
-    (find-file-other-window user-init-file))
-  (define-key my-leader-map "e" 'er-find-user-init-file)
+  (define-key my-leader-map "e" '(lambda() (interactive) (find-file user-init-file)))
   (define-key my-leader-map "s" 'eval-buffer)
+  (define-key my-leader-map "S" '(lambda() (interactive) (progn (save-buffer) (eval-buffer) (previous-buffer))))
   (define-key my-leader-map (kbd "g s") 'magit-status)
 
   (evil-mode))
