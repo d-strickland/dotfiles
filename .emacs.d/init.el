@@ -87,22 +87,6 @@
   :config
   (global-flycheck-mode))
 
-;;; (use-package ycmd
-;;;   :ensure t
-;;;   :config
-;;;   (setq ycmd-server-command
-;;;         (list "python" "/Users/david/.vim/bundle/YouCompleteMe/third_party/ycmd/ycmd"))
-;;;   (global-ycmd-mode))
-;;; (use-package company-ycmd
-;;;   :ensure t
-;;;   :config
-;;;   (company-ycmd-setup))
-;;; 
-;;; (use-package flycheck-ycmd
-;;;   :ensure t
-;;;   :config
-;;;   (flycheck-ycmd-setup))
-
 (use-package magit
   :ensure t)
 

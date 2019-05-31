@@ -37,7 +37,6 @@ Plugin 'Townk/vim-autoclose'
 Plugin 'tpope/vim-sleuth'
 Plugin 'kien/ctrlp.vim'
 Plugin 'w0rp/ale'
-Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 " }}}
