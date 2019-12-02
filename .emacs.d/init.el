@@ -1,4 +1,4 @@
-;;; init.el --- emacs settings
+;; init.el --- emacs settings
 ;;; Commentary:
 ;;; My Emacs settings
 ;;; Code:
@@ -50,6 +50,7 @@
   (define-key my-leader-map "s" 'eval-buffer)
   (define-key my-leader-map "S" '(lambda() (interactive) (progn (save-buffer) (eval-buffer) (previous-buffer))))
   (define-key my-leader-map (kbd "g s") 'magit-status)
+  (define-key my-leader-map (kbd "g b") 'magit-branch)
 
   (evil-mode))
 
@@ -59,6 +60,7 @@
   (evil-escape-mode)
   (setq-default evil-escape-key-sequence "kj")
   (setq-default evil-escape-unordered-key-sequence t))
+
 (use-package evil-surround
   :ensure t
   :config
@@ -69,13 +71,16 @@
   :config
   (set-face-attribute 'region nil :background "#002b36" :foreground "#fdf6e3")
   (load-theme 'solarized-dark t))
+
 ;; (use-package zenburn-theme
 ;;   :ensure t
 ;;   :config (load-theme 'zenburn t))
 
-
 (use-package helm
-  :ensure t)
+  :ensure t
+  :config
+  (require 'helm-config)
+  'helm-mode)
 
 (use-package company
   :ensure t
@@ -99,6 +104,25 @@
 (use-package elm-mode
   :ensure t)
 
+(use-package groovy-mode
+  :ensure t)
+
+(use-package powershell
+  :ensure t)
+
+;; (use-package flycheck-posframe
+;;   :ensure t
+;;   :after flycheck
+;;   :config (add-hook 'flycheck-mode-hook #'flycheck-posframe-mode))
+
+(use-package json-mode
+  :ensure t)
+
+(use-package intero
+  :ensure t
+  :config
+  (add-hook 'haskell-mode-hook #'intero-mode))
+
 (use-package elpy
   :ensure t
   :init
@@ -106,13 +130,14 @@
   :config
   (setq elpy-rpc-python-command "/usr/local/bin/python3"))
 
-(use-package intero
-  :ensure t
-  :config
-  (add-hook 'haskell-mode-hook 'intero-mode))
-
 (use-package markdown-mode
   :ensure t)
+
+(use-package recentf
+  :ensure t
+  :config
+  (setq-default recentf-max-menu-items 25)
+  (setq-default recentf-max-saved-items 25))
 
 ;; Turn off useless GUI shit
 (tool-bar-mode -1)
@@ -124,9 +149,13 @@
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
 (global-linum-mode t)
+(if (display-graphic-p)
+    (setq-default linum-format "%4d")
+    (setq-default linum-format "%4d \u2502"))
 (when (member "Menlo" (font-family-list)) (set-frame-font "Menlo-13" t t))
 (setq-default vc-follow-symlinks t)
 (setq-default undo-tree-auto-save-history t)
+(define-key dired-mode-map "-" 'dired-up-directory)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
