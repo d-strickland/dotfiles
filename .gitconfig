@@ -3,8 +3,8 @@
 	email = david.robert.strickland@gmail.com
 
 [core]
-	editor = vim
-	autocrlf = input
+	editor = emacsclient -nw
+	autocrlf = false
 	pager = less -rFX
 	excludesFile = ~/.gitignore
 	trustctime = false
