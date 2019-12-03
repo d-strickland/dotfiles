@@ -69,7 +69,7 @@
 (use-package solarized-theme
   :ensure t
   :config
-  (set-face-attribute 'region nil :background "#002b36" :foreground "#fdf6e3")
+  (set-face-attribute 'region nil :background "#002b36" :foreground "#eee8d5")
   (load-theme 'solarized-dark t))
 
 ;; (use-package zenburn-theme
@@ -149,9 +149,7 @@
 (setq-default tab-width 2)
 (setq-default indent-tabs-mode nil)
 (global-linum-mode t)
-(if (display-graphic-p)
-    (setq-default linum-format "%4d")
-    (setq-default linum-format "%4d \u2502"))
+(setq-default linum-format "%4d\u2502")
 (when (member "Menlo" (font-family-list)) (set-frame-font "Menlo-13" t t))
 (setq-default vc-follow-symlinks t)
 (setq-default undo-tree-auto-save-history t)
@@ -175,7 +173,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Menlo" :foundry "nil" :slant normal :weight normal :height 130 :width normal))))
- '(region ((t (:foreground "#fdf6e3" :background "#002b36")))))
+ '(region ((t (:background "#002b36" :foreground "#eee8d5")))))
 
 (provide 'init)
 ;;; init.el ends here
