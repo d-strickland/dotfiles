@@ -39,6 +39,7 @@
   (eval-when-compile
     (defvar my-leader-map (make-sparse-keymap)
       "Keymap for \"leader key\" shortcuts."))
+
   (define-key my-leader-map "j" 'evil-window-down)
   (define-key my-leader-map "k" 'evil-window-up)
   (define-key my-leader-map "h" 'evil-window-left)
@@ -51,6 +52,14 @@
   (define-key my-leader-map "S" '(lambda() (interactive) (progn (save-buffer) (eval-buffer) (previous-buffer))))
   (define-key my-leader-map (kbd "g s") 'magit-status)
   (define-key my-leader-map (kbd "g b") 'magit-branch)
+
+  (defun paste-next-line ()
+    "Paste text from the kill ring onto the next line."
+    (interactive)
+    (end-of-line)
+    (newline-and-indent)
+    (evil-paste-after 1))
+  (define-key my-leader-map "p" 'paste-next-line)
 
   (evil-mode))
 
@@ -71,10 +80,6 @@
   :config
   (set-face-attribute 'region nil :background "#002b36" :foreground "#eee8d5")
   (load-theme 'solarized-dark t))
-
-;; (use-package zenburn-theme
-;;   :ensure t
-;;   :config (load-theme 'zenburn t))
 
 (use-package helm
   :ensure t
@@ -150,7 +155,6 @@
 (setq-default indent-tabs-mode nil)
 (global-linum-mode t)
 (setq-default linum-format "%4d\u2502")
-(when (member "Menlo" (font-family-list)) (set-frame-font "Menlo-13" t t))
 (setq-default vc-follow-symlinks t)
 (setq-default undo-tree-auto-save-history t)
 (define-key dired-mode-map "-" 'dired-up-directory)
