@@ -81,7 +81,7 @@
 (use-package solarized-theme
   :ensure t
   :config
-  (set-face-attribute 'region nil :background "#002b36" :foreground "#eee8d5")
+  (set-face-attribute 'region nil :background "#eee8d5" :foreground "#002b36")
   (load-theme 'solarized-dark t))
 
 (use-package helm
@@ -175,13 +175,18 @@
 
 ;; Misc. Settings
 (show-paren-mode 1)
-(setq-default tab-width 2)
-(setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode 1)
 (global-linum-mode t)
 (setq-default linum-format "%4d\u2502")
 (when (member "Meslo" (font-family-list)) (set-frame-font "Meslo LG M DZ" t t))
 (setq-default vc-follow-symlinks t)
 (setq-default undo-tree-auto-save-history t)
+(setq-default dired-hide-details-mode 1)
+(setq-default dired-listing-switches "-l")
+(setq-default dired-omit-files "^\\.?#\\|^\\..*^")
+
+(savehist-mode 1)
 (define-key dired-mode-map "-" 'dired-up-directory)
 
 (custom-set-variables
@@ -201,8 +206,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Menlo" :foundry "nil" :slant normal :weight normal :height 130 :width normal))))
- '(region ((t (:background "#002b36" :foreground "#eee8d5")))))
+ '(default ((t (:family "Menlo" :foundry "nil" :slant normal :weight normal :height 140 :width normal))))
+ '(region ((t (:background "#eee8d5" :foreground "#002b36")))))
 
 (provide 'init)
 ;;; init.el ends here
