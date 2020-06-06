@@ -61,6 +61,9 @@
     (evil-paste-after 1))
   (define-key my-leader-map "p" 'paste-next-line)
 
+  (define-key my-leader-map "f" 'flycheck-next-error)
+  (define-key my-leader-map "F" 'flycheck-previous-error)
+
   (evil-mode))
 
 (use-package evil-escape
@@ -90,12 +93,15 @@
 (use-package company
   :ensure t
   :config
-  (global-company-mode))
+  (global-company-mode)
+  (add-to-list 'company-backends 'company-elm)
+  (add-hook 'elm-mode-hook #'elm-oracle-setup-completion))
 
 (use-package flycheck
   :ensure t
   :config
-  (global-flycheck-mode))
+  (global-flycheck-mode)
+  (add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
 
 (use-package magit
   :ensure t)
@@ -107,6 +113,23 @@
   :ensure t)
 
 (use-package elm-mode
+  :ensure t
+  :init
+
+  ;; for elm-0.19
+  (setq elm-package-json "elm.json")
+
+  (defun init-elm-mode ()
+    (add-to-list 'company-backends 'company-elm)
+    (elm-format-on-save-mode))
+
+  (add-hook 'elm-mode-hook 'init-elm-mode)
+
+  ;; needs to be at top-level https://github.com/jcollard/elm-mode/issues/129#issuecomment-346974494
+  (with-eval-after-load 'elm-mode
+    (remove-hook 'elm-mode-hook 'elm-indent-mode)))
+
+(use-package flycheck-elm
   :ensure t)
 
 (use-package groovy-mode
@@ -155,6 +178,7 @@
 (setq-default indent-tabs-mode nil)
 (global-linum-mode t)
 (setq-default linum-format "%4d\u2502")
+(when (member "Meslo" (font-family-list)) (set-frame-font "Meslo LG M DZ" t t))
 (setq-default vc-follow-symlinks t)
 (setq-default undo-tree-auto-save-history t)
 (define-key dired-mode-map "-" 'dired-up-directory)
@@ -169,7 +193,7 @@
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-    (elm-mode flymd markdown-mode zenburn-theme intero color-theme-solarized evil-magit elpy kotlin-mode magit evil-surround flycheck-ycmd company-ycmd auto-complete flycheck helm solarized-theme use-package evil-visual-mark-mode evil-escape)))
+    (elm-oracle flycheck-elm elm-mode flymd markdown-mode zenburn-theme intero color-theme-solarized evil-magit elpy kotlin-mode magit evil-surround flycheck-ycmd company-ycmd auto-complete flycheck helm solarized-theme use-package evil-visual-mark-mode evil-escape)))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
