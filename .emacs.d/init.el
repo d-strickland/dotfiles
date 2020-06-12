@@ -112,6 +112,17 @@
 (use-package kotlin-mode
   :ensure t)
 
+(use-package haskell-mode
+  :ensure t)
+
+(use-package dante
+  :ensure t
+  :after haskell-mode
+  :commands 'dante-mode
+  :init
+  (add-hook 'haskell-mode-hook 'flycheck-mode)
+  (add-hook 'haskell-mode-hook 'dante-mode))
+
 (use-package elm-mode
   :ensure t
   :init
@@ -138,18 +149,8 @@
 (use-package powershell
   :ensure t)
 
-;; (use-package flycheck-posframe
-;;   :ensure t
-;;   :after flycheck
-;;   :config (add-hook 'flycheck-mode-hook #'flycheck-posframe-mode))
-
 (use-package json-mode
   :ensure t)
-
-(use-package intero
-  :ensure t
-  :config
-  (add-hook 'haskell-mode-hook #'intero-mode))
 
 (use-package elpy
   :ensure t
@@ -190,10 +191,10 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+    ("05a4b82c39107308b5c3720fd0c9792c2076e1ff3ebb6670c6f1c98d44227689" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-    (elm-oracle flycheck-elm elm-mode flymd markdown-mode zenburn-theme intero color-theme-solarized evil-magit elpy kotlin-mode magit evil-surround flycheck-ycmd company-ycmd auto-complete flycheck helm solarized-theme use-package evil-visual-mark-mode evil-escape)))
+    (dante haskell-mode elm-oracle flycheck-elm elm-mode flymd markdown-mode zenburn-theme color-theme-solarized evil-magit elpy kotlin-mode magit evil-surround flycheck-ycmd company-ycmd auto-complete flycheck helm solarized-theme use-package evil-visual-mark-mode evil-escape)))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
