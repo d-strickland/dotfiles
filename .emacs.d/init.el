@@ -7,6 +7,7 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -78,6 +79,14 @@
   :config
   (global-evil-surround-mode 1))
 
+(use-package evil-org
+  :ensure t
+  :after org
+  :hook (org-mode . (lambda () evil-org-mode))
+  :config
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
+
 (use-package solarized-theme
   :ensure t
   :config
@@ -102,6 +111,12 @@
   :config
   (global-flycheck-mode)
   (add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
+
+(use-package ispell
+  :ensure t)
+
+(use-package flyspell
+  :ensure t)
 
 (use-package magit
   :ensure t)
@@ -152,12 +167,15 @@
 (use-package json-mode
   :ensure t)
 
+(use-package yaml-mode
+  :ensure t)
+
 (use-package elpy
   :ensure t
   :init
   (elpy-enable)
   :config
-  (setq elpy-rpc-python-command "/usr/local/bin/python3"))
+  (setq elpy-rpc-python-command "python3"))
 
 (use-package markdown-mode
   :ensure t)
@@ -165,6 +183,7 @@
 (use-package recentf
   :ensure t
   :config
+  (recentf-mode 1)
   (setq-default recentf-max-menu-items 25)
   (setq-default recentf-max-saved-items 25))
 
@@ -172,12 +191,13 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (setq inhibit-startup-screen t)
+(setq inhibit-splash-screen t)
 
 ;; Misc. Settings
 (show-paren-mode 1)
 (setq-default tab-width 4)
-(setq-default indent-tabs-mode 1)
-(global-linum-mode t)
+(setq-default indent-tabs-mode nil)
+(global-linum-mode 0 )
 (setq-default linum-format "%4d\u2502")
 (when (member "Meslo" (font-family-list)) (set-frame-font "Meslo LG M DZ" t t))
 (setq-default vc-follow-symlinks t)
@@ -196,17 +216,17 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("05a4b82c39107308b5c3720fd0c9792c2076e1ff3ebb6670c6f1c98d44227689" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-    (dante haskell-mode elm-oracle flycheck-elm elm-mode flymd markdown-mode zenburn-theme color-theme-solarized evil-magit elpy kotlin-mode magit evil-surround flycheck-ycmd company-ycmd auto-complete flycheck helm solarized-theme use-package evil-visual-mark-mode evil-escape)))
+    (flycheck-elm dante evil-org yaml-mode elm-mode flymd markdown-mode zenburn-theme intero color-theme-solarized evil-magit elpy kotlin-mode magit evil-surround flycheck-ycmd company-ycmd auto-complete flycheck helm solarized-theme use-package evil-visual-mark-mode evil-escape)))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Menlo" :foundry "nil" :slant normal :weight normal :height 140 :width normal))))
+ '(default ((t (:family "Menlo" :foundry "nil" :slant normal :weight normal :height 160 :width normal))))
  '(region ((t (:background "#eee8d5" :foreground "#002b36")))))
 
 (provide 'init)
