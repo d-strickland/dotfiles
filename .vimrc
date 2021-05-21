@@ -24,7 +24,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-surround.git'
 Plugin 'Shougo/vimproc.vim.git'
-Plugin 'eagletmt/ghcmod-vim'
+" Plugin 'eagletmt/ghcmod-vim'
 " Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-vinegar.git'
 " Plugin 'Scuilion/gradle-syntastic-plugin'

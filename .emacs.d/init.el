@@ -5,7 +5,7 @@
 (require 'package)
 (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (setq exec-path (append exec-path '("/usr/local/bin")))
 (package-initialize)
@@ -26,7 +26,7 @@
   (setq evil-vsplit-window-right t)
   (setq evil-split-window-below t)
   (setq evil-shift-round nil)
-  (setq evil-shift-width 2)
+  (setq evil-shift-width 4)
   (setq evil-want-C-u-scroll t)
   (setq evil-ex-search-highlight-all nil)
   :config ;; tweak evil after loading it
@@ -110,6 +110,9 @@
   :ensure t
   :config
   (global-flycheck-mode)
+  (setq flycheck-python-flake8-executable "python3")
+  (setq flycheck-python-pycompile-executable "python3")
+  (setq flycheck-python-pylint-executable "python3")
   (add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
 
 (use-package ispell
@@ -136,7 +139,17 @@
   :commands 'dante-mode
   :init
   (add-hook 'haskell-mode-hook 'flycheck-mode)
-  (add-hook 'haskell-mode-hook 'dante-mode))
+  (add-hook 'haskell-mode-hook 'dante-mode)
+  (add-hook 'dante-mode-hook
+            '(lambda () (flycheck-add-next-checker
+                         'haskell-dante
+                         '(warning . haskell-hlint)))))
+
+(use-package format-all
+  :ensure t
+  :config
+  (add-hook 'haskell-mode-hook 'format-all-mode))
+  
 
 (use-package elm-mode
   :ensure t
@@ -216,18 +229,18 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+    ("05a4b82c39107308b5c3720fd0c9792c2076e1ff3ebb6670c6f1c98d44227689" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-    (flycheck-elm dante evil-org yaml-mode elm-mode flymd markdown-mode zenburn-theme intero color-theme-solarized evil-magit elpy kotlin-mode magit evil-surround flycheck-ycmd company-ycmd auto-complete flycheck helm solarized-theme use-package evil-visual-mark-mode evil-escape)))
+    (yaml-mode evil-org format-all dante haskell-mode elm-oracle flycheck-elm elm-mode flymd markdown-mode zenburn-theme color-theme-solarized evil-magit elpy kotlin-mode magit evil-surround flycheck-ycmd company-ycmd auto-complete flycheck helm solarized-theme use-package evil-visual-mark-mode evil-escape)))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Menlo" :foundry "nil" :slant normal :weight normal :height 160 :width normal))))
- '(region ((t (:background "#eee8d5" :foreground "#002b36")))))
+ '(default ((t (:family "Menlo" :foundry "nil" :slant normal :weight normal :height 130 :width normal))))
+ '(region ((t (:background "#002b36" :foreground "#eee8d5")))))
 
 (provide 'init)
 ;;; init.el ends here
