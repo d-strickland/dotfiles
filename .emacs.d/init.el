@@ -46,7 +46,7 @@
   (define-key my-leader-map "h" 'evil-window-left)
   (define-key my-leader-map "l" 'evil-window-right)
   (define-key my-leader-map ";" 'maximize-window)
-  (define-key my-leader-map "t" 'ansi-term)
+  (define-key my-leader-map "t" 'org-todo)
 
   (define-key my-leader-map "e" '(lambda() (interactive) (find-file user-init-file)))
   (define-key my-leader-map "s" 'eval-buffer)
@@ -82,7 +82,8 @@
 (use-package evil-org
   :ensure t
   :after org
-  :hook (org-mode . (lambda () evil-org-mode))
+  :hook
+  (org-mode . (lambda () evil-org-mode))
   :config
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
@@ -199,6 +200,9 @@
   (recentf-mode 1)
   (setq-default recentf-max-menu-items 25)
   (setq-default recentf-max-saved-items 25))
+
+(add-to-list 'auto-mode-alist '("\\.txt\\'" . org-mode))
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 
 ;; Turn off useless GUI shit
 (tool-bar-mode -1)
