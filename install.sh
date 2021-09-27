@@ -2,7 +2,15 @@
 
 mkdir ~/.emacs.d
 
-TARGETS=('.gitconfig' '.gitignore' '.vimrc' '.vim' '.emacs.d/init.el')
+TARGETS=(
+    '.gitconfig'
+    '.gitignore'
+    '.vimrc'
+    '.vim'
+    '.emacs.d/init.el'
+    '.emacs.d/linux.el'
+    '.emacs.d/default-system.el')
+
 for T in ${TARGETS[*]}; do
     if [ -a ~/$T ]
         then 

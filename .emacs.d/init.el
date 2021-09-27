@@ -10,12 +10,16 @@
 (setq exec-path (append exec-path '("/usr/local/bin")))
 (package-initialize)
 
+;; Bootstrap 'use-package'
+(eval-after-load 'gnutls
+  '(add-to-list 'gnutls-trustfiles "/etc/ssl/cert.pem"))
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-
 (eval-when-compile
   (require 'use-package))
+(require 'bind-key)
+(setq use-package-always-ensure t)
 
 ;; Load and configure evil
 (use-package evil
@@ -66,6 +70,12 @@
   (define-key my-leader-map "F" 'flycheck-previous-error)
 
   (evil-mode))
+
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init))
 
 (use-package evil-escape
   :ensure t
@@ -123,9 +133,6 @@
   :ensure t)
 
 (use-package magit
-  :ensure t)
-
-(use-package evil-magit
   :ensure t)
 
 (use-package kotlin-mode
@@ -216,7 +223,6 @@
 (setq-default indent-tabs-mode nil)
 (global-linum-mode 0 )
 (setq-default linum-format "%4d\u2502")
-(when (member "Meslo" (font-family-list)) (set-frame-font "Meslo LG M DZ" t t))
 (setq-default vc-follow-symlinks t)
 (setq-default undo-tree-auto-save-history t)
 (setq-default dired-hide-details-mode 1)
@@ -225,6 +231,12 @@
 
 (savehist-mode 1)
 (define-key dired-mode-map "-" 'dired-up-directory)
+
+;; System specific settings
+(load-file (expand-file-name
+            (cond ((eq system-type 'gnu/linux) "linux.el")
+                  (t "default-system.el"))
+            user-emacs-directory))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -236,7 +248,7 @@
     ("05a4b82c39107308b5c3720fd0c9792c2076e1ff3ebb6670c6f1c98d44227689" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-    (yaml-mode evil-org format-all dante haskell-mode elm-oracle flycheck-elm elm-mode flymd markdown-mode zenburn-theme color-theme-solarized evil-magit elpy kotlin-mode magit evil-surround flycheck-ycmd company-ycmd auto-complete flycheck helm solarized-theme use-package evil-visual-mark-mode evil-escape)))
+    (yaml-mode evil-org format-all dante haskell-mode elm-oracle flycheck-elm elm-mode flymd markdown-mode zenburn-theme color-theme-solarized elpy kotlin-mode magit evil-surround flycheck-ycmd company-ycmd auto-complete flycheck helm solarized-theme use-package evil-visual-mark-mode evil-escape)))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -244,7 +256,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Menlo" :foundry "nil" :slant normal :weight normal :height 130 :width normal))))
- '(region ((t (:background "#002b36" :foreground "#eee8d5")))))
+ '(region ((t (:background "#eee8d5" :foreground "#002b36")))))
 
 (provide 'init)
 ;;; init.el ends here
