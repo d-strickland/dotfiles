@@ -23,8 +23,8 @@
 
 ;; Load and configure evil
 (use-package evil
-  :ensure t ;; install the evil package if not installed
   :init ;; tweak evil's configuration before loading it
+  (setq evil-want-keybinding nil)
   (setq evil-search-module 'evil-search)
   (setq evil-ex-complete-emacs-commands nil)
   (setq evil-vsplit-window-right t)
@@ -73,24 +73,22 @@
 
 (use-package evil-collection
   :after evil
-  :ensure t
+  :init
+  (setq evil-want-keybinding nil)
   :config
   (evil-collection-init))
 
 (use-package evil-escape
-  :ensure t
   :config
   (evil-escape-mode)
   (setq-default evil-escape-key-sequence "kj")
   (setq-default evil-escape-unordered-key-sequence t))
 
 (use-package evil-surround
-  :ensure t
   :config
   (global-evil-surround-mode 1))
 
 (use-package evil-org
-  :ensure t
   :after org
   :hook
   (org-mode . (lambda () evil-org-mode))
@@ -99,26 +97,22 @@
   (evil-org-agenda-set-keys))
 
 (use-package solarized-theme
-  :ensure t
   :config
   (set-face-attribute 'region nil :background "#eee8d5" :foreground "#002b36")
   (load-theme 'solarized-dark t))
 
 (use-package helm
-  :ensure t
   :config
   (require 'helm-config)
   'helm-mode)
 
 (use-package company
-  :ensure t
   :config
   (global-company-mode)
   (add-to-list 'company-backends 'company-elm)
   (add-hook 'elm-mode-hook #'elm-oracle-setup-completion))
 
 (use-package flycheck
-  :ensure t
   :config
   (global-flycheck-mode)
   (setq flycheck-python-flake8-executable "python3")
@@ -126,23 +120,17 @@
   (setq flycheck-python-pylint-executable "python3")
   (add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
 
-(use-package ispell
-  :ensure t)
+(use-package ispell)
 
-(use-package flyspell
-  :ensure t)
+(use-package flyspell)
 
-(use-package magit
-  :ensure t)
+(use-package magit)
 
-(use-package kotlin-mode
-  :ensure t)
+(use-package kotlin-mode)
 
-(use-package haskell-mode
-  :ensure t)
+(use-package haskell-mode)
 
 (use-package dante
-  :ensure t
   :after haskell-mode
   :commands 'dante-mode
   :init
@@ -154,13 +142,10 @@
                          '(warning . haskell-hlint)))))
 
 (use-package format-all
-  :ensure t
   :config
   (add-hook 'haskell-mode-hook 'format-all-mode))
   
-
 (use-package elm-mode
-  :ensure t
   :init
 
   ;; for elm-0.19
@@ -176,33 +161,20 @@
   (with-eval-after-load 'elm-mode
     (remove-hook 'elm-mode-hook 'elm-indent-mode)))
 
-(use-package flycheck-elm
-  :ensure t)
-
-(use-package groovy-mode
-  :ensure t)
-
-(use-package powershell
-  :ensure t)
-
-(use-package json-mode
-  :ensure t)
-
-(use-package yaml-mode
-  :ensure t)
+(use-package flycheck-elm)
+(use-package groovy-mode)
+(use-package powershell)
+(use-package json-mode)
+(use-package yaml-mode)
+(use-package markdown-mode)
 
 (use-package elpy
-  :ensure t
   :init
   (elpy-enable)
   :config
   (setq elpy-rpc-python-command "python3"))
 
-(use-package markdown-mode
-  :ensure t)
-
 (use-package recentf
-  :ensure t
   :config
   (recentf-mode 1)
   (setq-default recentf-max-menu-items 25)
@@ -211,7 +183,7 @@
 (add-to-list 'auto-mode-alist '("\\.txt\\'" . org-mode))
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 
-;; Turn off useless GUI shit
+;; Turn off GUI bloat
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (setq inhibit-startup-screen t)
