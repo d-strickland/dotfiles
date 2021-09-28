@@ -3,20 +3,20 @@
 mkdir ~/.emacs.d
 
 TARGETS=(
-    '.gitconfig'
-    '.gitignore'
-    '.vimrc'
-    '.vim'
-    '.emacs.d/init.el'
-    '.emacs.d/linux.el'
-    '.emacs.d/default-system.el')
+    'gitconfig'
+    'gitignore'
+    'vimrc'
+    'vim'
+    'emacs.d/init.el'
+    'emacs.d/linux.el'
+    'emacs.d/default-system.el')
 
 for T in ${TARGETS[*]}; do
-    if [ -a ~/$T ]
+    if [ -a ~/".$T" ]
         then 
-            mv ~/$T ~/$T.`date +%Y%m%d%H%`
+            mv ~/".$T" ~/".$T".`date +%Y%m%d%H%`
     fi
-    ln -s `pwd`/$T ~/$T
+    ln -s `pwd`/$T ~/".$T"
     echo "Created symlink for $T"
 done
 
