@@ -3,7 +3,7 @@
 	email = 5721544+d-strickland@users.noreply.github.com
 
 [core]
-	editor = emacsclient -nw
+	editor = emacs
 	autocrlf = false
 	pager = less -rFX
 	excludesFile = ~/.gitignore
