@@ -51,6 +51,7 @@
   (define-key my-leader-map "l" 'evil-window-right)
   (define-key my-leader-map ";" 'maximize-window)
   (define-key my-leader-map "t" 'org-todo)
+  (define-key my-leader-map "c" 'org-toggle-checkbox)
 
   (define-key my-leader-map "e" '(lambda() (interactive) (find-file user-init-file)))
   (define-key my-leader-map "s" 'eval-buffer)
@@ -96,6 +97,12 @@
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
 
+(use-package vdiff
+  :config
+  (setq-default vdiff-auto-refine t)
+  (define-key vdiff-mode-map (kbd "d o") 'vdiff-receive-changes-and-step)
+  (define-key vdiff-mode-map (kbd "d p") 'vdiff-send-changes-and-step))
+
 (use-package solarized-theme
   :config
   (set-face-attribute 'region nil :background "#eee8d5" :foreground "#002b36")
@@ -108,17 +115,17 @@
 
 (use-package company
   :config
-  (global-company-mode)
-  (add-to-list 'company-backends 'company-elm)
-  (add-hook 'elm-mode-hook #'elm-oracle-setup-completion))
+  (global-company-mode))
+;;  (add-to-list 'company-backends 'company-elm)
+;;  (add-hook 'elm-mode-hook #'elm-oracle-setup-completion))
 
 (use-package flycheck
   :config
   (global-flycheck-mode)
   (setq flycheck-python-flake8-executable "python3")
   (setq flycheck-python-pycompile-executable "python3")
-  (setq flycheck-python-pylint-executable "python3")
-  (add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
+  (setq flycheck-python-pylint-executable "python3"))
+;;  (add-hook 'flycheck-mode-hook #'flycheck-elm-setup))
 
 (use-package ispell)
 
@@ -164,7 +171,7 @@
 (use-package flycheck-elm)
 (use-package groovy-mode)
 (use-package powershell)
-(use-package json-mode)
+;; (use-package json-mode)
 (use-package yaml-mode)
 (use-package markdown-mode)
 
@@ -216,18 +223,17 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   (quote
-    ("05a4b82c39107308b5c3720fd0c9792c2076e1ff3ebb6670c6f1c98d44227689" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+   '("05a4b82c39107308b5c3720fd0c9792c2076e1ff3ebb6670c6f1c98d44227689" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))
+ '(helm-minibuffer-history-key "M-p")
  '(package-selected-packages
-   (quote
-    (yaml-mode evil-org format-all dante haskell-mode elm-oracle flycheck-elm elm-mode flymd markdown-mode zenburn-theme color-theme-solarized elpy kotlin-mode magit evil-surround flycheck-ycmd company-ycmd auto-complete flycheck helm solarized-theme use-package evil-visual-mark-mode evil-escape)))
+   '(vdiff yaml-mode evil-org format-all dante haskell-mode elm-oracle flycheck-elm elm-mode flymd markdown-mode zenburn-theme color-theme-solarized elpy kotlin-mode magit evil-surround flycheck-ycmd company-ycmd auto-complete flycheck helm solarized-theme use-package evil-visual-mark-mode evil-escape))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Menlo" :foundry "nil" :slant normal :weight normal :height 130 :width normal))))
+ '(default ((t (:family "Monospace" :foundry "nil" :slant normal :weight normal :height 140 :width normal))))
  '(region ((t (:background "#eee8d5" :foreground "#002b36")))))
 
 (provide 'init)
