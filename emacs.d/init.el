@@ -207,6 +207,8 @@
 (setq-default dired-hide-details-mode 1)
 (setq-default dired-listing-switches "-l")
 (setq-default dired-omit-files "^\\.?#\\|^\\..*^")
+(setq-default org-log-done t)
+(setq-default org-agenda-files '("~/notes"))
 
 (savehist-mode 1)
 (define-key dired-mode-map "-" 'dired-up-directory)
