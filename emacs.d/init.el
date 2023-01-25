@@ -187,6 +187,12 @@
   (setq-default recentf-max-menu-items 25)
   (setq-default recentf-max-saved-items 25))
 
+(use-package dired
+  :ensure nil  ;; Built-in
+  :hook (dired-mode . dired-hide-details-mode)
+  :custom
+  (dired-listing-switches "-aBhl --group-directories-first"))
+
 (add-to-list 'auto-mode-alist '("\\.txt\\'" . org-mode))
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 
@@ -204,9 +210,9 @@
 (setq-default linum-format "%4d\u2502")
 (setq-default vc-follow-symlinks t)
 (setq-default undo-tree-auto-save-history t)
-(setq-default dired-hide-details-mode 1)
-(setq-default dired-listing-switches "-l")
-(setq-default dired-omit-files "^\\.?#\\|^\\..*^")
+;; (setq-default dired-hide-details-mode 1)
+;; (setq-default dired-listing-switches "-l")
+;; (setq-default dired-omit-files "^\\.?#\\|^\\..*^")
 (setq-default org-log-done t)
 (setq-default org-agenda-files '("~/notes"))
 
