@@ -7,6 +7,7 @@ TARGETS=(
     'gitignore'
     'vimrc'
     'vim'
+    'zshrc'
     'emacs.d/init.el'
     'emacs.d/linux.el'
     'emacs.d/default-system.el')
