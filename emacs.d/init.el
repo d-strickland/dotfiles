@@ -113,9 +113,9 @@
   (require 'helm-config)
   'helm-mode)
 
-(use-package company
-  :config
-  (global-company-mode))
+;; (use-package company
+;;  :config
+;;  (global-company-mode))
 ;;  (add-to-list 'company-backends 'company-elm)
 ;;  (add-hook 'elm-mode-hook #'elm-oracle-setup-completion))
 
@@ -175,11 +175,11 @@
 (use-package yaml-mode)
 (use-package markdown-mode)
 
-(use-package elpy
-  :init
-  (elpy-enable)
-  :config
-  (setq elpy-rpc-python-command "python3"))
+;; (use-package elpy
+;;   :init
+;;   (elpy-enable)
+;;   :config
+;;   (setq elpy-rpc-python-command "python3"))
 
 (use-package recentf
   :config
@@ -206,7 +206,9 @@
 (show-paren-mode 1)
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
-(global-linum-mode 0 )
+;; (global-linum-mode 0 )
+(setq-default line-number-mode 1)
+(setq-default column-number-mode 1)
 (setq-default linum-format "%4d\u2502")
 (setq-default vc-follow-symlinks t)
 (setq-default undo-tree-auto-save-history t)
@@ -222,7 +224,7 @@
 ;; System specific settings
 (load-file (expand-file-name
             (cond ((eq system-type 'gnu/linux) "linux.el")
-                  (t "default-system.el"))
+                  (T "default-system.el"))
             user-emacs-directory))
 
 (custom-set-variables
