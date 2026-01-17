@@ -233,10 +233,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("05a4b82c39107308b5c3720fd0c9792c2076e1ff3ebb6670c6f1c98d44227689" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default))
+   '("05a4b82c39107308b5c3720fd0c9792c2076e1ff3ebb6670c6f1c98d44227689"
+     "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4"
+     default))
  '(helm-minibuffer-history-key "M-p")
- '(package-selected-packages
-   '(vdiff yaml-mode evil-org format-all dante haskell-mode elm-oracle flycheck-elm elm-mode flymd markdown-mode zenburn-theme color-theme-solarized elpy kotlin-mode magit evil-surround flycheck-ycmd company-ycmd auto-complete flycheck helm solarized-theme use-package evil-visual-mark-mode evil-escape))
+ '(package-selected-packages nil)
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

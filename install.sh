@@ -3,6 +3,7 @@
 mkdir ~/.emacs.d
 
 TARGETS=(
+    'config/sway'
     'gitconfig'
     'gitignore'
     'vimrc'

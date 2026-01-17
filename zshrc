@@ -118,5 +118,6 @@ emacs_start_or_attach () {
 alias emacs=emacs_start_or_attach
 export EDITOR=emacs_start_or_attach
 export ALTERNATE_EDITOR=vim
+alias gmail="google-chrome --app=https://mail.google.com"
 
 export AUTH_TMUX=true # go/glinux/roadwarrior
